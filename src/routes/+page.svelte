@@ -25,10 +25,30 @@
   ];
 
   const projects = [
-    { title: "CU Get Reg v2", tech: "Svelte, Frontend", desc: "Developing the Frontend for Chula's course registration assistant." },
-    { title: "Backend RESTful API", tech: "Node.js, Express, Postman", desc: "Developed a backend API tested endpoints." },
-    { title: "TodMenAdventure Game", tech: "Java, JavaFX, OOP", desc: "Game application with OOP principles and unit testing." },
-    { title: "Watermelon Ripeness ML", tech: "Python, Streamlit, ML", desc: "AI-powered web app to classify watermelon ripeness." }
+    { 
+      title: "CU Get Reg v2", 
+      tech: "Svelte, Frontend", 
+      desc: "Developing the Frontend for Chula's course registration assistant.",
+      link: "" // ไม่มีลิงก์
+    },
+    { 
+      title: "Backend RESTful API", 
+      tech: "Node.js, Express, Postman", 
+      desc: "Developed a backend API tested endpoints.",
+      link: "" // ไม่มีลิงก์
+    },
+    { 
+      title: "TodMenAdventure Game", 
+      tech: "Java, JavaFX, OOP", 
+      desc: "Game application with OOP principles and unit testing.",
+      link: "https://github.com/2110215-ProgMeth/cedt-project-2025-2-todmen" 
+    },
+    { 
+      title: "Watermelon Ripeness ML", 
+      tech: "Python, Streamlit, ML", 
+      desc: "AI-powered web app to classify watermelon ripeness.",
+      link: "https://github.com/pluemW1/app2" 
+    }
   ];
 
   const activities = [
@@ -105,15 +125,22 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         {#each projects as project, i}
           {#if visible}
-            <div class="bg-slate-900 p-8 rounded-2xl shadow-sm border border-slate-800 group transition hover:shadow-xl hover:shadow-sky-900/20 hover:-translate-y-2 hover:border-sky-500/50 duration-300"
+            <div class="bg-slate-900 p-8 rounded-2xl shadow-sm border border-slate-800 group transition hover:shadow-xl hover:shadow-sky-900/20 hover:-translate-y-2 hover:border-sky-500/50 duration-300 flex flex-col h-full"
                  in:fly={{ y: 50, delay: 150 * i, duration: 800 }}>
-              <h3 class="text-xl font-bold text-white mb-2 group-hover:text-sky-400 transition">{project.title}</h3>
-              <p class="text-sky-500 text-sm font-medium mb-4">{project.tech}</p>
-              <p class="text-slate-400 mb-6 leading-relaxed line-clamp-3">{project.desc}</p>
-              <a href="https://github.com/pluemW1" target="_blank" class="text-slate-300 font-medium text-sm flex items-center gap-1.5 hover:text-sky-400 transition">
-                View on GitHub
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
-              </a>
+              
+              <div class="flex-grow">
+                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-sky-400 transition">{project.title}</h3>
+                <p class="text-sky-500 text-sm font-medium mb-4">{project.tech}</p>
+                <p class="text-slate-400 mb-6 leading-relaxed line-clamp-3">{project.desc}</p>
+              </div>
+
+              {#if project.link}
+                <a href={project.link} target="_blank" class="text-slate-300 font-medium text-sm flex items-center gap-1.5 hover:text-sky-400 transition mt-auto">
+                  View on GitHub
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                </a>
+              {/if}
+
             </div>
           {/if}
         {/each}
